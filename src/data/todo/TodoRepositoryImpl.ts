@@ -13,12 +13,10 @@ export class TodoRepositoryImpl implements TodoRepository {
   ) {}
 
   async findAll(): Promise<Todo[]> {
-    return [
-      {
-        id: '123',
-        name: 'Running',
-        isFinished: false,
-      },
-    ];
+    return this.todoCacheDataSource.find();
+  }
+
+  async addOrUpdate(todo: Todo): Promise<Todo> {
+    return this.todoCacheDataSource.addOrUpdate(todo);
   }
 }

@@ -16,4 +16,8 @@ export class TodoCacheDataSource implements TodoDataSource {
   async find(): Promise<TodoDTO[]> {
     return this.todoInMemoryDataSource.findAll();
   }
+
+  async addOrUpdate(todo: TodoDTO): Promise<TodoDTO> {
+    return this.todoInMemoryDataSource.addOrUpdate(todo);
+  }
 }

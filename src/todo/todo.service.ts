@@ -14,4 +14,11 @@ export class TodoService {
   async findAll(): Promise<Todo[]> {
     return this.todoRepository.findAll();
   }
+
+  async add(todo: Omit<Todo, 'id'>): Promise<Todo> {
+    return this.todoRepository.addOrUpdate({
+      ...todo,
+      id: `${new Date().getTime()}`,
+    });
+  }
 }
